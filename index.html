@@ -377,7 +377,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  4
+                  1.4k
                 </span>
               
 
@@ -393,7 +393,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  6
                 </span>
               
             </div>
@@ -416,7 +416,69 @@
       
         
           
-            <h1 id="mui-通用类"><a href="#mui-通用类" class="headerlink" title="mui 通用类"></a>mui 通用类</h1>
+            <h1 id="mui-通用类"><a href="#mui-通用类" class="headerlink" title="mui 通用类"></a>mui 通用类</h1><p>最近要用 mui 框架写一个项目。</p>
+<p>于是根据官网资料和查阅资料整理了一下 mui 的 css 类。</p>
+<p><strong>注意：</strong></p>
+<ul>
+<li><p>一切内容都要包裹在 .mui-content 中，否则就有可能被固定栏遮罩，除了固定栏之外。</p>
+</li>
+<li><p>固定栏是指带有 .mui-bar 属性的节点，他们都是基于 fixed 定位的，使用时需遵循一个规则：放在.mui-content 元素之前。</p>
+</li>
+<li><p>即使是底部工具条和底部选项卡，也要放在 .mui-content 之前，否则固定栏会遮住部分主内容。</p>
+</li>
+</ul>
+<p><br><br><br><br><br><br><br></p>
+<h2 id="颜色（color）"><a href="#颜色（color）" class="headerlink" title="颜色（color）"></a>颜色（color）</h2><ul>
+<li><p>danger 红色(red)</p>
+</li>
+<li><p>warning 黄色(yellow)</p>
+</li>
+<li><p>primary 蓝色(blue)</p>
+</li>
+<li><p>success 绿色(green)</p>
+</li>
+</ul>
+<ul>
+<li>royal 紫色(purple)</li>
+</ul>
+<p><strong>注意：</strong>.mui-btn-primary 等效于.mui-btn-blue;<br><br><br><br><br><br></p>
+<h2 id="背景颜色"><a href="#背景颜色" class="headerlink" title="背景颜色"></a>背景颜色</h2><p>可以给任意元素添加 .mui-bg-*类添加背景颜色，可选参数为 primary/positive/negative。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;mui-bg-negative&quot;&gt;红色背景&lt;/div&gt;</span><br><span class="line">&lt;div class=&quot;mui-bg-primary&quot;&gt;蓝色背景&lt;/div&gt;</span><br><span class="line">&lt;div class=&quot;mui-bg-positive&quot;&gt;绿色背景&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<p>示例图：<br><img src="https://blogimg-1258556197.cos.ap-shanghai.myqcloud.com/WeChat0d988f57dfe52da448d9375b3ed71c61.png" align="left" width="300" height="150"><br><br><br><br><br><br></p>
+<h2 id="badge（数字角标）"><a href="#badge（数字角标）" class="headerlink" title="badge（数字角标）"></a>badge（数字角标）</h2><p>角标的核心类是 .mui-badge，默认为实心灰色背景；同时，mui 还内置了蓝色（blue）、绿色(green)、黄色(yellow)、红色(red)、紫色(purple)五种色系的数字角标，如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;span class=&quot;mui-badge&quot;&gt;默认灰色&lt;/span&gt;</span><br><span class="line">&lt;span class=&quot;mui-badge mui-badge-primary&quot;&gt;蓝色&lt;/span&gt;</span><br><span class="line">&lt;span class=&quot;mui-badge mui-badge-success&quot;&gt;绿色&lt;/span&gt;</span><br><span class="line">&lt;span class=&quot;mui-badge mui-badge-warning&quot;&gt;黄色&lt;/span&gt;</span><br><span class="line">&lt;span class=&quot;mui-badge mui-badge-danger&quot;&gt;红色&lt;/span&gt;</span><br><span class="line">&lt;span class=&quot;mui-badge mui-badge-purple&quot;&gt;紫色&lt;/span&gt;</span><br></pre></td></tr></table></figure>
+<p>示例图：<br><img src="https://blogimg-1258556197.cos.ap-shanghai.myqcloud.com/61548296773_.pic.jpg" align="left" width="300" height="150"><br><br><br><br><br>如果不要底色，则增加 .mui-badge-inverted 类即可，如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;span class=&quot;mui-badge mui-badge-inverted&quot;&gt;默认灰色&lt;/span&gt;</span><br><span class="line">&lt;span class=&quot;mui-badge mui-badge-primary mui-badge-inverted&quot;&gt;蓝色&lt;/span&gt;</span><br><span class="line">&lt;span class=&quot;mui-badge mui-badge-success mui-badge-inverted&quot;&gt;绿色&lt;/span&gt;</span><br><span class="line">&lt;span class=&quot;mui-badge mui-badge-warning mui-badge-inverted&quot;&gt;黄色&lt;/span&gt;</span><br><span class="line">&lt;span class=&quot;mui-badge mui-badge-danger mui-badge-inverted&quot;&gt;红色&lt;/span&gt;</span><br><span class="line">&lt;span class=&quot;mui-badge mui-badge-purple mui-badge-inverted&quot;&gt;紫色&lt;/span&gt;</span><br></pre></td></tr></table></figure>
+<p>示例图：<br><img src="https://blogimg-1258556197.cos.ap-shanghai.myqcloud.com/WeChat108844c280fcd42d06dd23351eb98d43.png" align="left" width="300" height="150"><br><br><br><br><br><br></p>
+<h2 id="按钮"><a href="#按钮" class="headerlink" title="按钮"></a>按钮</h2><p>在 button 节点上增加.mui-btn 类，即可生成默认按钮；若需要其他颜色的按钮，则继续增加对应 class 即可。<br>默认按钮有底色，运行效果如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;button type=&quot;button&quot; class=&quot;mui-btn&quot;&gt;默认&lt;/button&gt;</span><br><span class="line">&lt;button type=&quot;button&quot; class=&quot;mui-btn mui-btn-primary&quot;&gt;蓝色&lt;/button&gt;</span><br><span class="line">&lt;button type=&quot;button&quot; class=&quot;mui-btn mui-btn-success&quot;&gt;绿色&lt;/button&gt;</span><br><span class="line">&lt;button type=&quot;button&quot; class=&quot;mui-btn mui-btn-warning&quot;&gt;黄色&lt;/button&gt;</span><br><span class="line">&lt;button type=&quot;button&quot; class=&quot;mui-btn mui-btn-danger&quot;&gt;红色&lt;/button&gt;</span><br><span class="line">&lt;button type=&quot;button&quot; class=&quot;mui-btn mui-btn-royal&quot;&gt;紫色&lt;/button&gt;</span><br></pre></td></tr></table></figure>
+<p>示例图：<br><img src="https://blogimg-1258556197.cos.ap-shanghai.myqcloud.com/WeChatda9252e868cf0b6e564dd7f0d3307177.png" align="left" width="300" height="150"><br><br><br><br></p>
+<p>若希望无底色、有边框的按钮，仅需增加 .mui-btn-outlined 类即可，代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;button type=&quot;button&quot; class=&quot;mui-btn mui-btn-outlined&quot;&gt;默认&lt;/button&gt;</span><br><span class="line">&lt;button type=&quot;button&quot; class=&quot;mui-btn mui-btn-primary mui-btn-outlined&quot;&gt;蓝色&lt;/button&gt;</span><br><span class="line">&lt;button type=&quot;button&quot; class=&quot;mui-btn mui-btn-success mui-btn-outlined&quot;&gt;绿色&lt;/button&gt;</span><br><span class="line">&lt;button type=&quot;button&quot; class=&quot;mui-btn mui-btn-warning mui-btn-outlined&quot;&gt;黄色&lt;/button&gt;</span><br><span class="line">&lt;button type=&quot;button&quot; class=&quot;mui-btn mui-btn-danger mui-btn-outlined&quot;&gt;红色&lt;/button&gt;</span><br><span class="line">&lt;button type=&quot;button&quot; class=&quot;mui-btn mui-btn-royal mui-btn-outlined&quot;&gt;紫色&lt;/button&gt;</span><br></pre></td></tr></table></figure>
+<p>示例图：<br><img src="https://blogimg-1258556197.cos.ap-shanghai.myqcloud.com/WeChat8833d3e121bdafed80117be7ed08ecb2.png" align="left" width="300" height="150"><br><br><br><br><br><br></p>
+<h2 id="字体样式"><a href="#字体样式" class="headerlink" title="字体样式"></a>字体样式</h2><h3 id="文字对齐"><a href="#文字对齐" class="headerlink" title="文字对齐"></a>文字对齐</h3><p>通过 .mui-text-*来控制文字对齐方式,代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;mui-text-left mui-bg-negative&quot;&gt;居左&lt;/div&gt;</span><br><span class="line">&lt;div class=&quot;mui-text-center mui-bg-primary&quot;&gt;居中&lt;/div&gt;</span><br><span class="line">&lt;div class=&quot;mui-text-right mui-bg-positive&quot;&gt;居右&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<p>示例图：<br><img src="https://blogimg-1258556197.cos.ap-shanghai.myqcloud.com/WeChatd18bec582e59e85dcaa92b69fc8f448e.png" align="left" width="300" height="150"><br><br><br><br></p>
+<h3 id="文字溢出省略"><a href="#文字溢出省略" class="headerlink" title="文字溢出省略"></a>文字溢出省略</h3><p>.mui-ellipsis 来控制文字溢出省略<br>需要设置显示多行，通过设置-webkit-line-clamp 属性，如显示三行添加 style=”-webkit-line-clamp:3”，代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;p class=&quot;mui-ellipsis&quot;&gt;超出一行的文字省略，超出一行的文字省略，超出一行的文字省略，超出一行的文字省略&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">&lt;br/&gt;</span><br><span class="line"></span><br><span class="line">&lt;p class=&quot;mui-ellipsis-2&quot;&gt;超出两行的文字省略，超出两行的文字省略，超出两行的文字省略，超出两行的文字省略，超出两行的文字省略，超出两行的文字省略&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">&lt;br/&gt;</span><br><span class="line"></span><br><span class="line">&lt;p class=&quot;mui-ellipsis-2&quot; style=&quot;-webkit-line-clamp:3&quot;&gt;超出三行的文字省略，超出三行的文字省略，超出三行的文字省略，超出三行的文字省略，超出三行的文字省略，超出三行的文字省略，超出三行的文字省略，超出三行的文字省略超出三行的文字省略，&lt;/p&gt;</span><br></pre></td></tr></table></figure>
+<p>示例图：<br><img src="https://blogimg-1258556197.cos.ap-shanghai.myqcloud.com/WeChat511305c913011c5a5059ba5334ca60fa.png" align="left" width="300" height="150"></p>
+<p><br><br><br><br><br><br><br></p>
+<h2 id="浮动"><a href="#浮动" class="headerlink" title="浮动"></a>浮动</h2><p>给元素设置.mui-pull-left 或者.mui-pull-right 类，设置浮动。<br>使用.mui-clearfix 清除浮动。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;mui-clearfix&quot;&gt;</span><br><span class="line">  &lt;div class=&quot;mui-pull-left mui-bg-negative&quot;&gt;我在左边&lt;/div&gt;</span><br><span class="line">  &lt;div class=&quot;mui-pull-right mui-bg-primary&quot;&gt;我在右边&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<p>示例图：<br><img src="https://blogimg-1258556197.cos.ap-shanghai.myqcloud.com/WeChat5635d488bfe8e732db4a208724d68d6a.png" align="left" width="300" height="150"></p>
+<p><br><br><br><br><br><br><br></p>
+<h2 id="元素显示和隐藏"><a href="#元素显示和隐藏" class="headerlink" title="元素显示和隐藏"></a>元素显示和隐藏</h2><p>.mui-visibility 默认为设置元素可见，.mui-hidden 默认为设置元素隐藏。</p>
+<p><strong>注意：</strong>元素隐藏不占据位置。</p>
+<p><br></p>
+<h2 id="转为行内或块级元素"><a href="#转为行内或块级元素" class="headerlink" title="转为行内或块级元素"></a>转为行内或块级元素</h2><ul>
+<li><p>设置成行内元素：给元素设置 .mui-inline 类</p>
+</li>
+<li><p>设置成块级元素：给元素设置 .mui-block 类</p>
+</li>
+</ul>
+<p><br><br><br><br><br></p>
+<h1 id="END…"><a href="#END…" class="headerlink" title="END…"></a>END…</h1><p><br><br><br><br><br></p>
+
           
         
       
