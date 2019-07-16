@@ -292,6 +292,238 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/16/初识ES6中的Symbol/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="陈敏哲">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://blogimg-1258556197.cos.ap-shanghai.myqcloud.com/WechatIMG3.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="陈敏哲的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/07/16/初识ES6中的Symbol/" itemprop="url">初识ES6中的Symbol</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-16T16:10:18+08:00">
+                2019-07-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.4k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  6
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Symbol"><a href="#Symbol" class="headerlink" title="Symbol"></a>Symbol</h1><p>文章内容参考《ECMAScript 6 入门》。</p>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>Symbol 是 ES6 引入的一种新的原始数据类型，是独一无二的值。</p>
+<p><strong>注意：</strong> Symbol 函数不能使用 new 命令，因为生成的 Symbol 是一个原始类型的值，不是对象。</p>
+<h3 id="JavaScript-的七种数据类型："><a href="#JavaScript-的七种数据类型：" class="headerlink" title="JavaScript 的七种数据类型："></a>JavaScript 的七种数据类型：</h3><ol>
+<li>Undefined</li>
+<li>Null</li>
+<li>Boolean</li>
+<li>String</li>
+<li>Number</li>
+<li>Object</li>
+<li>Symbol</li>
+</ol>
+<h3 id="判断数据类型的方法"><a href="#判断数据类型的方法" class="headerlink" title="判断数据类型的方法"></a>判断数据类型的方法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let data = Symbol()</span><br><span class="line"></span><br><span class="line">Object.prototype.toString.call(data).slice(8,-1) // &quot;Symbol&quot;</span><br></pre></td></tr></table></figure>
+<h3 id="使用事项"><a href="#使用事项" class="headerlink" title="使用事项"></a>使用事项</h3><ol>
+<li>Symbol 是独一无二的值。</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">let idx = Symbol(&apos;pro&apos;)</span><br><span class="line">let key = Symbol(&apos;pro&apos;)</span><br><span class="line"></span><br><span class="line">idx // Symbol(pro)</span><br><span class="line">key // Symbol(pro)</span><br><span class="line"></span><br><span class="line">a === b // false</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>Symbol 函数可以接受一个字符串作为参数（如：例 1），表示对 Symbol 实例的描述，主要是为了在控制台显示，或者转为字符串时，比较容易区分。</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// 无法区分两者</span><br><span class="line">let s1 = Symbol()</span><br><span class="line">let s2 = Symbol()</span><br><span class="line"></span><br><span class="line">s1 // Symbol()</span><br><span class="line">s2 // Symbol()</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>当 Symbol 的参数是一个对象，就会调用该对象的 toString 方法（执行拆箱操作），将其转为字符串，然后才生成一个 Symbol 值。</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">const obj = &#123;</span><br><span class="line">  toString() &#123;</span><br><span class="line">    return &apos;abc&apos;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">const sym = Symbol(obj)</span><br><span class="line">sym // Symbol(abc)</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>Symbol 值可以显式转为字符串和布尔值。但是不能转换成数值，也不能与其他类型的值进行运算，会报错。</li>
+</ol>
+<ul>
+<li>转字符串</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">let s = Symbol(&apos;Str Symbol&apos;)</span><br><span class="line"></span><br><span class="line">String(s) // &apos;Symbol(Str Symbol)&apos;</span><br><span class="line">s.toString() // &apos;Symbol(Str Symbol)&apos;</span><br><span class="line"></span><br><span class="line">// 不能将Symbol强制转换为字符串或是数字类型</span><br><span class="line">s + &apos;&apos;  // TypeError: Cannot convert a Symbol value to a string</span><br></pre></td></tr></table></figure>
+<ul>
+<li>转布尔</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let s = Symbol(&apos;Str Symbol&apos;)</span><br><span class="line"></span><br><span class="line">Boolean(s) // true</span><br></pre></td></tr></table></figure>
+<ul>
+<li>转数值，运算</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">let s = Symbol(&apos;Str Symbol&apos;)</span><br><span class="line"></span><br><span class="line">Number(s) // Cannot convert a Symbol value to a number</span><br><span class="line"></span><br><span class="line">&apos;look at this&apos; + s //  TypeError: Cannot convert a Symbol value to a string</span><br></pre></td></tr></table></figure>
+<ol start="5">
+<li>Symbol 函数不能使用 new 命令，因为生成的 Symbol 是一个原始类型的值，不是对象。</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">new Symbol() // TypeError: Symbol is not a constructor</span><br></pre></td></tr></table></figure>
+<h2 id="Symbol-prototype-description"><a href="#Symbol-prototype-description" class="headerlink" title="Symbol.prototype.description"></a>Symbol.prototype.description</h2><p>创建 Symbol 的时候，可以添加一个描述。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const s = Symbol(&apos;sym&apos;)</span><br></pre></td></tr></table></figure>
+<p>上面代码中，s 的描述就是字符串 sym。</p>
+<p>但是，读取这个描述需要将 Symbol 显式转为字符串，即下面的写法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const s = Symbol(&apos;sym&apos;)</span><br><span class="line"></span><br><span class="line">String(s).slice(7,-1) // &quot;sym&quot;</span><br></pre></td></tr></table></figure>
+<p>上面的用法不是很方便。ES2019 提供了一个实例属性 description，直接返回 Symbol 的描述。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const s = Symbol(&apos;sym&apos;)</span><br><span class="line"></span><br><span class="line">s.description // &quot;sym&quot;</span><br></pre></td></tr></table></figure>
+<h2 id="Symbol-作为对象属性名"><a href="#Symbol-作为对象属性名" class="headerlink" title="Symbol 作为对象属性名"></a>Symbol 作为对象属性名</h2><p>根据每一个 Symbol 值都是不等的特性，可以用 Symbol 作为唯一标识符，使用 Symbol 作为对象属性名可以保证不会出现同名的属性。</p>
+<p><strong>注意：</strong> symbol 不是字符串类型！！！<br><br>使用 symbol 作为对象属性名时，必须放在方括号 [ ]之 中,因为点运算符后面总是字符串。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">let mySymbol = Symbol();</span><br><span class="line"></span><br><span class="line">// 第一种写法</span><br><span class="line">let a = &#123;&#125;;</span><br><span class="line">a[mySymbol] = &apos;Hello!&apos;;</span><br><span class="line"></span><br><span class="line">// 第二种写法</span><br><span class="line">let a = &#123;</span><br><span class="line">  [mySymbol]: &apos;Hello!&apos;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">// 第三种写法</span><br><span class="line">let a = &#123;&#125;;</span><br><span class="line">Object.defineProperty(a, mySymbol, &#123; value: &apos;Hello!&apos; &#125;);</span><br><span class="line"></span><br><span class="line">// 以上写法都得到同样结果</span><br><span class="line">a[mySymbol] // &quot;Hello!&quot;</span><br></pre></td></tr></table></figure>
+<h2 id="使用-Symbol-来代替常量"><a href="#使用-Symbol-来代替常量" class="headerlink" title="使用 Symbol 来代替常量"></a>使用 Symbol 来代替常量</h2><p>我们经常需要用一组常量区分不同的类型，处理不同的逻辑。其实我们并不在意这几个常量值是什么，只要是唯一的。这时可以用 Symbol 来实现。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">const apple = &apos;myApple&apos;</span><br><span class="line">const orange = &apos;myOrange&apos;</span><br><span class="line">const pear = &apos;myPear&apos;</span><br><span class="line"></span><br><span class="line">function getFruit(fruit) &#123;</span><br><span class="line">  switch (fruit) &#123;</span><br><span class="line">    case apple:</span><br><span class="line">      console.log(&apos;我是a先生&apos;)</span><br><span class="line">      break</span><br><span class="line">    case orange:</span><br><span class="line">      console.log(&apos;我是b女士&apos;)</span><br><span class="line">      break</span><br><span class="line">    case pear:</span><br><span class="line">      console.log(&apos;我是c女士&apos;)</span><br><span class="line">      break</span><br><span class="line">    default:</span><br><span class="line">      console.log(&apos;这是什么&apos;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">getFruit(apple) // 我是a先生</span><br></pre></td></tr></table></figure>
+<p>观察以上代码，我们会发现，上述定义的常量值是什么并不重要。只要保证常量值间互不相等即可。</p>
+<p>直接使用 Symbol 赋值即可：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const apple = Symbol()</span><br><span class="line">const orange = Symbol()</span><br><span class="line">const pear = Symbol()</span><br></pre></td></tr></table></figure>
+<h2 id="Symbol-属性检索"><a href="#Symbol-属性检索" class="headerlink" title="Symbol 属性检索"></a>Symbol 属性检索</h2><p>以 Symbol 作为属性名，不会出现在 for…in、for…of 循环中，也不会被 Object.keys()、Object.getOwnPropertyNames()、JSON.stringify()返回。</p>
+<ol>
+<li>Object.getOwnPropertySymbols 方法：获取指定对象的所有 Symbol 属性名的集合数组</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">const a = Symbol(&apos;a&apos;)</span><br><span class="line">const b = Symbol(&apos;b&apos;)</span><br><span class="line"></span><br><span class="line">let obj = &#123;</span><br><span class="line">  [a]: &apos;aaa&apos;,</span><br><span class="line">  [b]: &apos;bbb&apos;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">console.log(Object.getOwnPropertySymbols(obj)) // [ Symbol(a), Symbol(b) ]</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>Reflect.ownKeys 方法：返回所有类型的键名，包括常规键名和 Symbol 键名。</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">let obj = &#123;</span><br><span class="line">  [Symbol(&apos;a&apos;)]: &apos;aaa&apos;,</span><br><span class="line">  b: &apos;bbb&apos;,</span><br><span class="line">  c: &apos;ccc&apos;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">console.log(Reflect.ownKeys(obj)) // [ &apos;b&apos;, &apos;c&apos;, Symbol(a) ]st</span><br></pre></td></tr></table></figure>
+<h2 id="Symbol-定义类的私有属性-方法-重点"><a href="#Symbol-定义类的私有属性-方法-重点" class="headerlink" title="Symbol 定义类的私有属性/方法 (重点)"></a>Symbol 定义类的私有属性/方法 (重点)</h2><p>以 Symbol 值作为名称的属性，不会被常规方法遍历得到。利用这个特性，可以为对象定义一些非私有的、但又希望只用于内部的方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">function myObject(name, age) &#123;</span><br><span class="line">  let Age = Symbol()</span><br><span class="line">  this.name = name</span><br><span class="line">  this[Age] = age</span><br><span class="line">  this.checkAge = (num) =&gt; &#123;</span><br><span class="line">    return this[Age] === num</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">let func = new myObject(&apos;z先生&apos;, 18)</span><br><span class="line"></span><br><span class="line">console.log(func.checkAge(18)) // true</span><br><span class="line">console.log(func.name) // z先生</span><br><span class="line">console.log(func.age) // undefined</span><br><span class="line">console.log(func[age]) // age is not defined</span><br></pre></td></tr></table></figure>
+<h2 id="Symbol-共享体系"><a href="#Symbol-共享体系" class="headerlink" title="Symbol 共享体系"></a>Symbol 共享体系</h2><p>如果想创建一个可共享的 Symbol，可以使用 Symbol.for()方法。</p>
+<p>Symbol.for 方法，接收一个字符串参数，然后全局环境中搜索有没有以该字符串参数作为名称的 Symbol 值：</p>
+<ul>
+<li>如果有，就返回这个 Symbol 值</li>
+<li>否则就全局环境中登记新建并返回一个以该字符串为名称的 Symbol 值。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">let s1 = Symbol.for(&apos;s&apos;)</span><br><span class="line">let s2 = Symbol(&apos;s&apos;)</span><br><span class="line">let s3 = Symbol.for(&apos;s&apos;)</span><br><span class="line"></span><br><span class="line">s1 === s2 // false</span><br><span class="line">s1 === s3 // true</span><br><span class="line"></span><br><span class="line">Symbol(&apos;sym&apos;) === Symbol(&apos;sym&apos;) // false</span><br><span class="line">Symbol.for(&apos;sym&apos;) === Symbol.for(&apos;sym&apos;) // true</span><br></pre></td></tr></table></figure>
+<p><strong>注意：</strong> Symbol.for 为 Symbol 值登记的名字，是全局环境的，可以在不同的 iframe 或 service worker 中取到同一个值。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">iframe = document.createElement(&apos;iframe&apos;);</span><br><span class="line">iframe.src = String(window.location);</span><br><span class="line">document.body.appendChild(iframe);</span><br><span class="line"></span><br><span class="line">iframe.contentWindow.Symbol.for(&apos;foo&apos;) === Symbol.for(&apos;foo&apos;) // true</span><br></pre></td></tr></table></figure>
+<p>上面代码中，iframe 窗口生成的 Symbol 值，可以在主页面得到。</p>
+<h2 id="END"><a href="#END" class="headerlink" title="END"></a>END</h2><p>知之，行知，方得知。</p>
+<p align="right">转载分享，请标明出处。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/28/MongoDB常用语法/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1013,7 +1245,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1035,7 +1267,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
