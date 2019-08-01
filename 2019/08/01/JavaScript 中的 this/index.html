@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="JavaScript,this,">
 
 
 
@@ -86,16 +86,18 @@
 
 
 
-<meta name="description" content="做最好的自己">
-<meta property="og:type" content="website">
-<meta property="og:title" content="陈敏哲的博客">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="what’s this ？最近稍稍有点空闲，复习一下基础知识。说起 JavaScript 这门语言让人头疼的地方， 就绕不开 this 关键字的指向问题。 经过孜孜不倦地翻阅各大 IT 牛人的博客和相关网站之后……被虐的过程就不详细描述了！！ 总之，学习完之后，我就”人不住手” 地总结了一下学到的知识，分享给大家。">
+<meta name="keywords" content="JavaScript,this">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript中的this">
+<meta property="og:url" content="http://yoursite.com/2019/08/01/JavaScript 中的 this/index.html">
 <meta property="og:site_name" content="陈敏哲的博客">
-<meta property="og:description" content="做最好的自己">
+<meta property="og:description" content="what’s this ？最近稍稍有点空闲，复习一下基础知识。说起 JavaScript 这门语言让人头疼的地方， 就绕不开 this 关键字的指向问题。 经过孜孜不倦地翻阅各大 IT 牛人的博客和相关网站之后……被虐的过程就不详细描述了！！ 总之，学习完之后，我就”人不住手” 地总结了一下学到的知识，分享给大家。">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-08-01T08:44:34.148Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="陈敏哲的博客">
-<meta name="twitter:description" content="做最好的自己">
+<meta name="twitter:title" content="JavaScript中的this">
+<meta name="twitter:description" content="what’s this ？最近稍稍有点空闲，复习一下基础知识。说起 JavaScript 这门语言让人头疼的地方， 就绕不开 this 关键字的指向问题。 经过孜孜不倦地翻阅各大 IT 牛人的博客和相关网站之后……被虐的过程就不详细描述了！！ 总之，学习完之后，我就”人不住手” 地总结了一下学到的知识，分享给大家。">
 
 
 
@@ -125,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/">
+  <link rel="canonical" href="http://yoursite.com/2019/08/01/JavaScript 中的 this/">
 
 
 
 
 
-  <title>陈敏哲的博客</title>
+  <title>JavaScript中的this | 陈敏哲的博客</title>
   
 
 
@@ -150,8 +152,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
     <a href="https://github.com/minzhechen" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
 
@@ -277,9 +278,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -309,9 +310,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/08/01/JavaScript 中的 this/" itemprop="url">JavaScript中的this</a></h1>
+          <h1 class="post-title" itemprop="name headline">JavaScript中的this</h1>
         
 
         <div class="post-meta">
@@ -365,6 +364,11 @@
           
 
           
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">本文总阅读数 <i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次
+            </span>
+          
 
           
             <div class="post-wordcount">
@@ -414,18 +418,82 @@
       
 
       
-        
-          <h1 id="what’s-this-？"><a href="#what’s-this-？" class="headerlink" title="what’s this ？"></a>what’s this ？</h1><p>最近稍稍有点空闲，复习一下基础知识。说起 JavaScript 这门语言让人头疼的地方， 就绕不开 this 关键字的指向问题。</p>
+        <h1 id="what’s-this-？"><a href="#what’s-this-？" class="headerlink" title="what’s this ？"></a>what’s this ？</h1><p>最近稍稍有点空闲，复习一下基础知识。说起 JavaScript 这门语言让人头疼的地方， 就绕不开 this 关键字的指向问题。</p>
 <p>经过孜孜不倦地翻阅各大 IT 牛人的博客和相关网站之后……<br>被虐的过程就不详细描述了！！</p>
 <p>总之，学习完之后，我就”人不住手” 地总结了一下学到的知识，分享给大家。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/08/01/JavaScript 中的 this/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
+<a id="more"></a>
+<p><br></p>
+<h1 id="学习-this-的必要"><a href="#学习-this-的必要" class="headerlink" title="学习 this 的必要"></a>学习 this 的必要</h1><p>众所周知，JavaScript 是一门基于原型的编程语言，我们可以通过使用关键词<br><strong>new</strong> 和 <strong>this</strong> 来实现代码的复用。</p>
+<p>通过学习 <strong>this</strong> 等相关知识，能帮助你更好了解这门语言的设计模式和特性，加深你对代码的理解与使用。<br><br></p>
+<h1 id="this-是什么？this-指向谁？"><a href="#this-是什么？this-指向谁？" class="headerlink" title="this 是什么？this 指向谁？"></a>this 是什么？this 指向谁？</h1><ol>
+<li>this 是 JS 关键字，代表了一个空间地址。</li>
+<li>this 是一个指针，指向函数运行时所在的环境。</li>
+</ol>
+<p>通俗讲，就是谁调用了函数，函数内的 this 就指向谁。因此，我们想知道 this 指向谁，就一定要清楚到底是谁调用了函数。（PS：哈哈哈，说了句废话。）<br><br></p>
+<h1 id="this-的四种调用"><a href="#this-的四种调用" class="headerlink" title="this 的四种调用"></a>this 的四种调用</h1><h2 id="默认调用"><a href="#默认调用" class="headerlink" title="默认调用"></a>默认调用</h2><ul>
+<li>独立函数调用时，this 指向 window 对象</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// 注意:这里不能使用let</span><br><span class="line">var a = 1   // 全局用let声明的变量不属于window</span><br><span class="line"></span><br><span class="line">function fn()&#123;</span><br><span class="line">    console.log(this.a)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// fn函数当前运行环境是 &quot;window&quot; 对象，所以this指向 全局window对象</span><br><span class="line">fn() // 1</span><br></pre></td></tr></table></figure>
+<ul>
+<li>严格模式下，默认绑定的 this 指向 undefined 。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">;(function() &#123;</span><br><span class="line">    &apos;use strict&apos;</span><br><span class="line">    console.log(this) // undefined</span><br><span class="line">&#125;)()</span><br></pre></td></tr></table></figure>
+<h2 id="对象调用"><a href="#对象调用" class="headerlink" title="对象调用"></a>对象调用</h2><ul>
+<li>如果函数执行时有上下文对象，会把函数里的 this 默认绑定到这个上下文对象上。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">var a = 10</span><br><span class="line"></span><br><span class="line">function fn()&#123;</span><br><span class="line">    console.log(this.a);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">let obj = &#123;</span><br><span class="line">    a : 20,</span><br><span class="line">    fn : fn</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 对象obj调用了fn函数，fn的this指向当前的运行环境 &quot;obj&quot; 对象，输出20</span><br><span class="line">obj.fn() // 20</span><br><span class="line"></span><br><span class="line">// 因为 obj.fn 是引用类型，即 objFn ===  fn函数。</span><br><span class="line">let objFn = obj.fn</span><br><span class="line"></span><br><span class="line">// 独立调用函数 objFn，fn的this指向当前的运行环境 &quot;window&quot; 对象，输出10</span><br><span class="line">objFn() // 10</span><br></pre></td></tr></table></figure>
+<ul>
+<li>多层调用时，默认获取最后一层调用的上下文对象。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">var a = 10</span><br><span class="line"></span><br><span class="line">function fn() &#123;</span><br><span class="line">    console.log(this.a)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">let obj = &#123;</span><br><span class="line">    a: 20,</span><br><span class="line">    fn: fn</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">let obj2 = &#123;</span><br><span class="line">    a: 30,</span><br><span class="line">    obj: obj</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 默认绑定最后调用的上下文，即this 指向 obj。</span><br><span class="line">obj2.obj.fn() // 20</span><br></pre></td></tr></table></figure>
+<h2 id="call、apply、bind-强制绑定"><a href="#call、apply、bind-强制绑定" class="headerlink" title="call、apply、bind 强制绑定"></a>call、apply、bind 强制绑定</h2><ul>
+<li>通过 call、apply、bind 改变函数的 this 指向。</li>
+</ul>
+<p>绑定后无论怎么调用，也不会改变其 this 指向。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">let obj = &#123;</span><br><span class="line">    a: 10</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">let obj2 = &#123;</span><br><span class="line">    a: 20,</span><br><span class="line">    fn() &#123;</span><br><span class="line">        console.log(this.a)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function fn2() &#123;</span><br><span class="line">    obj2.fn.call(obj) // 把obj2.fn的this指向对象obj</span><br><span class="line">&#125;</span><br><span class="line">// 虽然执行环境是 &quot;window&quot;，但是因为通过call强制绑定了this，所以输出10</span><br><span class="line">fn2() // 10</span><br></pre></td></tr></table></figure>
+<p><br></p>
+<h2 id="new-绑定调用"><a href="#new-绑定调用" class="headerlink" title="new 绑定调用"></a>new 绑定调用</h2><p>老生常谈，先看看 JS 中 new 关键字做了什么：</p>
+<blockquote>
+<ol>
+<li>在内存中创建一个新对象</li>
+<li>将新对象的<em>proto</em>指向构造函数的原型 prototype 对象</li>
+<li>将构造函数的作用域赋值给新对象，（this 指向新对象）</li>
+<li>执行构造函数中的代码（给这个新对象加属性和方法）</li>
+<li>返回新对象，如果这个函数没有返回其他对象。</li>
+</ol>
+</blockquote>
+<p>得出结论：</p>
+<ul>
+<li>使用 new 调用函数，返回的对象的 this 始终指向自身。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">function fn() &#123;</span><br><span class="line">    this.a = 10</span><br><span class="line">    console.log(this)</span><br><span class="line">&#125;</span><br><span class="line">// obj 是从new出来的实例</span><br><span class="line">var obj = new fn() // fn &#123;a: 10&#125;</span><br><span class="line"></span><br><span class="line">// obj的this指向自身</span><br><span class="line">console.log(obj.a) // 10</span><br><span class="line"></span><br><span class="line">console.log(window.a) // undefined</span><br><span class="line">// &quot;window&quot;环境下执行了fn函数，this指向fn</span><br><span class="line"></span><br><span class="line">fn() // window对象</span><br><span class="line"></span><br><span class="line">console.log(window.a) // 10</span><br></pre></td></tr></table></figure>
+<p><br></p>
+<h1 id="箭头函数的-this"><a href="#箭头函数的-this" class="headerlink" title="箭头函数的 this"></a>箭头函数的 this</h1><p>箭头函数区别于以上介绍的运行规则，而是完全根据外部作用域来决定 this，但其父级是遵循 this 绑定规则的（即：如果箭头函数的父级的 this 指向 window，那么箭头函数的 this 也指向 window）</p>
+<p>通过例子认识下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">let obj=&#123;</span><br><span class="line">    a:10,</span><br><span class="line">    fn:function()&#123;</span><br><span class="line">        setTimeout(function()&#123;console.log(this.a)&#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">obj.fn() // undefined</span><br></pre></td></tr></table></figure>
+<p>上述例子，可以发现在 setTimeout 中传入函数时，函数中的 this 会指向 window 对象，那么怎样让 this 指向 obj 对象?</p>
+<p>修改下代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">let obj=&#123;</span><br><span class="line">    a:10,</span><br><span class="line">    fn:function()&#123;</span><br><span class="line">        setTimeout(()=&gt;&#123;console.log(this.a)&#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">obj.fn() // 10</span><br></pre></td></tr></table></figure>
+<p>发现在我们使用箭头函数之后，使其继承了父函数 obj.fn 的 this 指针，达到了如下相同效果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">let obj = &#123;</span><br><span class="line">    a: 10,</span><br><span class="line">    fn: function() &#123;</span><br><span class="line">        console.log(this.a)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">obj.fn() // 10</span><br></pre></td></tr></table></figure>
+<p>看到这里，应该以及理解了箭头函数的 this 是继承来的意思。<br>让我们再通过几个例子方便去理解箭头函数中的 this。</p>
+<p>例 1：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">let obj = &#123;</span><br><span class="line">    fn: () =&gt; &#123;</span><br><span class="line">        console.log(this)</span><br><span class="line">    &#125;,</span><br><span class="line">    fn2() &#123;</span><br><span class="line">        console.log(this)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">obj.fn() // window对象</span><br><span class="line">obj.fn2() // &#123;fn: ƒ, fn2: ƒ&#125;</span><br></pre></td></tr></table></figure>
+<p>相信你一定很疑惑，为什么上述箭头函数里输出的是 window 对象，那么再看一段代码就清楚了。</p>
+<p>例 2：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let obj = &#123;</span><br><span class="line">    that: this</span><br><span class="line">&#125;</span><br><span class="line">console.log(obj.that) // window对象</span><br></pre></td></tr></table></figure>
+<p>我们发现，obj 里的 this 指向的是全局的 window 对象，那么就很好理解了，箭头函数继承了 obj 中的 this，也指向了全局 window 对象。</p>
+<p>最后，我们可以通过箭头函数实现强制绑定 this 的效果。</p>
+<p>没修改前的代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">var a = 10</span><br><span class="line"></span><br><span class="line">let obj = &#123;</span><br><span class="line">    a : 20,</span><br><span class="line">    fn() &#123;</span><br><span class="line">        console.log(this.a);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">obj.fn() // 20</span><br><span class="line"></span><br><span class="line">let objFn = obj.fn</span><br><span class="line"></span><br><span class="line">objFn() // 10</span><br></pre></td></tr></table></figure>
+<p>以上例子是我们讲解对象调用时的例子，我们不难发现，直接用 obj 对象去调用和独立调用时输出的结果不一致。如果你有仔细阅读文章的话，应该不难理解造成这种情形的原因。</p>
+<p>接下来，我们通过箭头函数改造下代码，使我们复制的引用，独立调用时 this 也指向 obj。</p>
+<p>修改后的代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">var a = 10</span><br><span class="line"></span><br><span class="line">let obj = &#123;</span><br><span class="line">    a: 20,</span><br><span class="line">    fn() &#123;</span><br><span class="line">        return () =&gt; &#123;</span><br><span class="line">            console.log(this.a)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">obj.fn()() // 20</span><br><span class="line"></span><br><span class="line">let objFn = obj.fn()</span><br><span class="line"></span><br><span class="line">objFn() // 20</span><br><span class="line"></span><br><span class="line">// 发现即使是用call强制绑定，也无法改变其this</span><br><span class="line">objFn.call(window) // 20</span><br></pre></td></tr></table></figure>
+<p><br></p>
+<h1 id="END"><a href="#END" class="headerlink" title="END"></a>END</h1><p>知之，行知，方得芝。<br><br></p>
+<p></p><p align="right">转载分享，请标明出处。</p><br><br><p></p>
+
       
     </div>
     
@@ -435,374 +503,72 @@
     
 
     
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>喜欢可以支持一下</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="https://blogimg-1258556197.cos.ap-shanghai.myqcloud.com/WechatIMG2.jpeg" alt="陈敏哲 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="https://blogimg-1258556197.cos.ap-shanghai.myqcloud.com/WechatIMG3.jpeg" alt="陈敏哲 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
 
     
 
     <footer class="post-footer">
       
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/16/初识ES6中的Symbol/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="陈敏哲">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://blogimg-1258556197.cos.ap-shanghai.myqcloud.com/WechatIMG3.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="陈敏哲的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/07/16/初识ES6中的Symbol/" itemprop="url">初识ES6中的Symbol</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-16T16:10:18+08:00">
-                2019-07-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
+        <div class="post-tags">
           
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
-                    <span itemprop="name">JavaScript</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
+            <a href="/tags/JavaScript/" rel="tag"><i class="fa fa-thumbs-up"></i> JavaScript</a>
           
-
+            <a href="/tags/this/" rel="tag"><i class="fa fa-thumbs-up"></i> this</a>
           
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  1.4k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  6
-                </span>
-              
-            </div>
-          
-
-          
-
         </div>
-      </header>
-    
+      
 
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
+      
       
       
 
       
-        
-          <h1 id="Symbol"><a href="#Symbol" class="headerlink" title="Symbol"></a>Symbol</h1><p>文章内容参考《ECMAScript 6 入门》。</p>
-<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>Symbol 是 ES6 引入的一种新的原始数据类型，是独一无二的值。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/07/16/初识ES6中的Symbol/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/16/初识ES6中的Symbol/" rel="next" title="初识ES6中的Symbol">
+                <i class="fa fa-chevron-left"></i> 初识ES6中的Symbol
+              </a>
+            
           </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
 
-    
+          <span class="post-nav-divider"></span>
 
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/28/MongoDB常用语法/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="陈敏哲">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://blogimg-1258556197.cos.ap-shanghai.myqcloud.com/WechatIMG3.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="陈敏哲的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/04/28/MongoDB常用语法/" itemprop="url">MongoDB常用语法</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
+          <div class="post-nav-prev post-nav-item">
             
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-28T11:48:58+08:00">
-                2019-04-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/前端/" itemprop="url" rel="index">
-                    <span itemprop="name">前端</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  1.6k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  6
-                </span>
-              
-            </div>
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          <h1 id="1-基本指令"><a href="#1-基本指令" class="headerlink" title="1.基本指令"></a>1.基本指令</h1>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/04/28/MongoDB常用语法/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -812,371 +578,53 @@
   </article>
 
 
-    
+
+    <div class="post-spread">
       
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
 
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/23/mui组件通用css类/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="陈敏哲">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://blogimg-1258556197.cos.ap-shanghai.myqcloud.com/WechatIMG3.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="陈敏哲的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/01/23/mui组件通用css类/" itemprop="url">mui组件通用css类</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-23T17:51:08+08:00">
-                2019-01-23
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/前端/" itemprop="url" rel="index">
-                    <span itemprop="name">前端</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  1.4k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  6
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="mui-通用类"><a href="#mui-通用类" class="headerlink" title="mui 通用类"></a>mui 通用类</h1><p>最近要用 mui 框架写一个项目。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/01/23/mui组件通用css类/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript">
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
       
     </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
   </div>
-  
-  
-  
-  </article>
 
 
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/21/第一篇博客文/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="陈敏哲">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://blogimg-1258556197.cos.ap-shanghai.myqcloud.com/WechatIMG3.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="陈敏哲的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/01/21/第一篇博客文/" itemprop="url">博客的开始</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-21T15:57:23+08:00">
-                2019-01-21
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/生活/" itemprop="url" rel="index">
-                    <span itemprop="name">生活</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  388
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="写博客"><a href="#写博客" class="headerlink" title="写博客"></a>写博客</h1><p>其实，对于写作一事的深恶痛绝是打小就有的毛病。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/01/21/第一篇博客文/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
           </div>
-          <!--/noindex-->
-        
-      
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80MjI5MC8xODgzNw"></div>
     </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-  </section>
 
   
 
 
-          </div>
-          
-
-
-          
 
         </div>
         
@@ -1197,8 +645,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -1276,6 +733,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#what’s-this-？"><span class="nav-number">1.</span> <span class="nav-text">what’s this ？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#学习-this-的必要"><span class="nav-number">2.</span> <span class="nav-text">学习 this 的必要</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#this-是什么？this-指向谁？"><span class="nav-number">3.</span> <span class="nav-text">this 是什么？this 指向谁？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#this-的四种调用"><span class="nav-number">4.</span> <span class="nav-text">this 的四种调用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#默认调用"><span class="nav-number">4.1.</span> <span class="nav-text">默认调用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对象调用"><span class="nav-number">4.2.</span> <span class="nav-text">对象调用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#call、apply、bind-强制绑定"><span class="nav-number">4.3.</span> <span class="nav-text">call、apply、bind 强制绑定</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#new-绑定调用"><span class="nav-number">4.4.</span> <span class="nav-text">new 绑定调用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#箭头函数的-this"><span class="nav-number">5.</span> <span class="nav-text">箭头函数的 this</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#END"><span class="nav-number">6.</span> <span class="nav-text">END</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -1445,6 +918,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
@@ -1473,6 +950,17 @@
 
 
 
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
   
 
 
