@@ -94,7 +94,7 @@
 <meta property="og:site_name" content="陈敏哲的博客">
 <meta property="og:description" content="what’s this ？最近稍稍有点空闲，复习一下基础知识。说起 JavaScript 这门语言让人头疼的地方， 就绕不开 this 关键字的指向问题。 经过孜孜不倦地翻阅各大 IT 牛人的博客和相关网站之后……被虐的过程就不详细描述了！！ 总之，学习完之后，我就 “人不住手” 地总结了一下学到的知识，分享给大家。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-10T05:46:44.770Z">
+<meta property="og:updated_time" content="2019-09-10T06:12:37.956Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript中的this">
 <meta name="twitter:description" content="what’s this ？最近稍稍有点空闲，复习一下基础知识。说起 JavaScript 这门语言让人头疼的地方， 就绕不开 this 关键字的指向问题。 经过孜孜不倦地翻阅各大 IT 牛人的博客和相关网站之后……被虐的过程就不详细描述了！！ 总之，学习完之后，我就 “人不住手” 地总结了一下学到的知识，分享给大家。">
@@ -491,7 +491,7 @@
 <p>修改后的代码：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">var a = 10</span><br><span class="line"></span><br><span class="line">let obj = &#123;</span><br><span class="line">    a: 20,</span><br><span class="line">    fn() &#123;</span><br><span class="line">        return () =&gt; &#123;</span><br><span class="line">            console.log(this.a)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">obj.fn()() // 20</span><br><span class="line"></span><br><span class="line">let objFn = obj.fn()</span><br><span class="line"></span><br><span class="line">objFn() // 20</span><br><span class="line"></span><br><span class="line">// 发现即使是用call强制绑定，也无法改变其this</span><br><span class="line">objFn.call(window) // 20</span><br></pre></td></tr></table></figure>
 <p><br></p>
-<h1 id="END"><a href="#END" class="headerlink" title="END"></a>END</h1><p>知之，行知，方得芝。<br><br></p>
+<h1 id="END"><a href="#END" class="headerlink" title="END"></a>END</h1><p>不吃点苦，怎么知道自己有多优秀。<br><br></p>
 <p></p><p align="right">转载分享，请标明出处。</p><br><br><p></p>
 
       
