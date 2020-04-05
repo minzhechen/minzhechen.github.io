@@ -94,7 +94,7 @@
 <meta property="og:site_name" content="陈敏哲的博客">
 <meta property="og:description" content="what’s this ？最近稍稍有点空闲，复习一下基础知识。说起 JavaScript 这门语言让人头疼的地方， 就绕不开 this 关键字的指向问题。 经过孜孜不倦地翻阅各大 IT 牛人的博客和相关网站之后……被虐的过程就不详细描述了！！ 总之，学习完之后，我就 “人不住手” 地总结了一下学到的知识，分享给大家。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-10T06:12:37.956Z">
+<meta property="og:updated_time" content="2020-04-05T15:25:05.717Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript中的this">
 <meta name="twitter:description" content="what’s this ？最近稍稍有点空闲，复习一下基础知识。说起 JavaScript 这门语言让人头疼的地方， 就绕不开 this 关键字的指向问题。 经过孜孜不倦地翻阅各大 IT 牛人的博客和相关网站之后……被虐的过程就不详细描述了！！ 总之，学习完之后，我就 “人不住手” 地总结了一下学到的知识，分享给大家。">
@@ -430,25 +430,15 @@
 <li>this 是一个指针，指向函数运行时所在的环境。</li>
 </ol>
 <p>通俗讲，就是谁调用了函数，函数内的 this 就指向谁。因此，我们想知道 this 指向谁，就一定要清楚到底是谁调用了函数。（PS：哈哈哈，说了句废话。）<br><br></p>
-<h1 id="this-的四种调用"><a href="#this-的四种调用" class="headerlink" title="this 的四种调用"></a>this 的四种调用</h1><h2 id="默认调用"><a href="#默认调用" class="headerlink" title="默认调用"></a>默认调用</h2><ul>
-<li>独立函数调用时，this 指向 window 对象</li>
-</ul>
+<h1 id="this-的四种调用"><a href="#this-的四种调用" class="headerlink" title="this 的四种调用"></a>this 的四种调用</h1><h2 id="默认调用"><a href="#默认调用" class="headerlink" title="默认调用"></a>默认调用</h2><p>独立函数调用时，this 指向 window 对象</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// 注意:这里不能使用let</span><br><span class="line">var a = 1   // 全局用let声明的变量不属于window</span><br><span class="line"></span><br><span class="line">function fn()&#123;</span><br><span class="line">    console.log(this.a)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// fn函数当前运行环境是 &quot;window&quot; 对象，所以this指向 全局window对象</span><br><span class="line">fn() // 1</span><br></pre></td></tr></table></figure>
-<ul>
-<li>严格模式下，默认绑定的 this 指向 undefined 。</li>
-</ul>
+<p>严格模式下，默认绑定的 this 指向 undefined 。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">;(function() &#123;</span><br><span class="line">    &apos;use strict&apos;</span><br><span class="line">    console.log(this) // undefined</span><br><span class="line">&#125;)()</span><br></pre></td></tr></table></figure>
-<h2 id="对象调用"><a href="#对象调用" class="headerlink" title="对象调用"></a>对象调用</h2><ul>
-<li>如果函数执行时有上下文对象，会把函数里的 this 默认绑定到这个上下文对象上。</li>
-</ul>
+<h2 id="对象调用"><a href="#对象调用" class="headerlink" title="对象调用"></a>对象调用</h2><p>如果函数执行时有上下文对象，会把函数里的 this 默认绑定到这个上下文对象上。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">var a = 10</span><br><span class="line"></span><br><span class="line">function fn()&#123;</span><br><span class="line">    console.log(this.a);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">let obj = &#123;</span><br><span class="line">    a : 20,</span><br><span class="line">    fn : fn</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 对象obj调用了fn函数，fn的this指向当前的运行环境 &quot;obj&quot; 对象，输出20</span><br><span class="line">obj.fn() // 20</span><br><span class="line"></span><br><span class="line">// 因为 obj.fn 是引用类型，即 objFn ===  fn函数。</span><br><span class="line">let objFn = obj.fn</span><br><span class="line"></span><br><span class="line">// 独立调用函数 objFn，fn的this指向当前的运行环境 &quot;window&quot; 对象，输出10</span><br><span class="line">objFn() // 10</span><br></pre></td></tr></table></figure>
-<ul>
-<li>多层调用时，默认获取最后一层调用的上下文对象。</li>
-</ul>
+<p>多层调用时，默认获取最后一层调用的上下文对象。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">var a = 10</span><br><span class="line"></span><br><span class="line">function fn() &#123;</span><br><span class="line">    console.log(this.a)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">let obj = &#123;</span><br><span class="line">    a: 20,</span><br><span class="line">    fn: fn</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">let obj2 = &#123;</span><br><span class="line">    a: 30,</span><br><span class="line">    obj: obj</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 默认绑定最后调用的上下文，即this 指向 obj。</span><br><span class="line">obj2.obj.fn() // 20</span><br></pre></td></tr></table></figure>
-<h2 id="call、apply、bind-强制绑定"><a href="#call、apply、bind-强制绑定" class="headerlink" title="call、apply、bind 强制绑定"></a>call、apply、bind 强制绑定</h2><ul>
-<li>通过 call、apply、bind 改变函数的 this 指向。</li>
-</ul>
+<h2 id="call、apply、bind-强制绑定"><a href="#call、apply、bind-强制绑定" class="headerlink" title="call、apply、bind 强制绑定"></a>call、apply、bind 强制绑定</h2><p>通过 call、apply、bind 改变函数的 this 指向。</p>
 <p>绑定后无论怎么调用，也不会改变其 this 指向。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">let obj = &#123;</span><br><span class="line">    a: 10</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">let obj2 = &#123;</span><br><span class="line">    a: 20,</span><br><span class="line">    fn() &#123;</span><br><span class="line">        console.log(this.a)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function fn2() &#123;</span><br><span class="line">    obj2.fn.call(obj) // 把obj2.fn的this指向对象obj</span><br><span class="line">&#125;</span><br><span class="line">// 虽然执行环境是 &quot;window&quot;，但是因为通过call强制绑定了this，所以输出10</span><br><span class="line">fn2() // 10</span><br></pre></td></tr></table></figure>
 <p><br></p>
@@ -463,9 +453,7 @@
 </ol>
 </blockquote>
 <p>得出结论：</p>
-<ul>
-<li>使用 new 调用函数，返回的对象的 this 始终指向自身。</li>
-</ul>
+<p>使用 new 调用函数，返回的对象的 this 始终指向自身。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">function fn() &#123;</span><br><span class="line">    this.a = 10</span><br><span class="line">    console.log(this)</span><br><span class="line">&#125;</span><br><span class="line">// obj 是从new出来的实例</span><br><span class="line">var obj = new fn() // fn &#123;a: 10&#125;</span><br><span class="line"></span><br><span class="line">// obj的this指向自身</span><br><span class="line">console.log(obj.a) // 10</span><br><span class="line"></span><br><span class="line">console.log(window.a) // undefined</span><br><span class="line">// &quot;window&quot;环境下执行了fn函数，this指向fn</span><br><span class="line"></span><br><span class="line">fn() // window对象</span><br><span class="line"></span><br><span class="line">console.log(window.a) // 10</span><br></pre></td></tr></table></figure>
 <p><br></p>
 <h1 id="箭头函数的-this"><a href="#箭头函数的-this" class="headerlink" title="箭头函数的 this"></a>箭头函数的 this</h1><p>箭头函数区别于以上介绍的运行规则，而是完全根据外部作用域来决定 this，但其父级是遵循 this 绑定规则的（即：如果箭头函数的父级的 this 指向 window，那么箭头函数的 this 也指向 window）</p>
@@ -491,7 +479,7 @@
 <p>修改后的代码：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">var a = 10</span><br><span class="line"></span><br><span class="line">let obj = &#123;</span><br><span class="line">    a: 20,</span><br><span class="line">    fn() &#123;</span><br><span class="line">        return () =&gt; &#123;</span><br><span class="line">            console.log(this.a)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">obj.fn()() // 20</span><br><span class="line"></span><br><span class="line">let objFn = obj.fn()</span><br><span class="line"></span><br><span class="line">objFn() // 20</span><br><span class="line"></span><br><span class="line">// 发现即使是用call强制绑定，也无法改变其this</span><br><span class="line">objFn.call(window) // 20</span><br></pre></td></tr></table></figure>
 <p><br></p>
-<h1 id="END"><a href="#END" class="headerlink" title="END"></a>END</h1><p>不吃点苦，怎么知道自己有多优秀。<br><br></p>
+<h1 id="END"><a href="#END" class="headerlink" title="END"></a>END</h1><p>无论怎样，都别丢了快乐和努力。<br><br></p>
 <p></p><p align="right">转载分享，请标明出处。</p><br><br><p></p>
 
       
